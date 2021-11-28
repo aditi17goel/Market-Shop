@@ -24,7 +24,7 @@
         $checkmobresult = mysqli_query($db, $checkmob);
         $fetch_rows = mysqli_num_rows($checkmobresult);
         if($fetch_rows>0){
-          echo "<div class='form'>
+          echo "<div class='alert alert-secondary'>
                 <h3>Mobile Number already exists</h3><br/>
                 <p class='link'><a href='register_shopkeeper.php'>New Registeration</a></p>
                 </div>";
@@ -34,13 +34,13 @@
 
           $result   = mysqli_query($db, $query);
           if ($result) {
-              echo "<div class='form'>
+              echo  "<div class='alert alert-secondary'>
                     <h3>Registered successfully.</h3>
                     <br>
                     <p class='link'><a href='login.php'>Login</a></p>
                     </div>";
           } else {
-              echo "<div class='form'>
+              echo "<div class='alert alert-secondary'>
                     <h3>There was an error, Please try again !</h3><br/>
                     <p class='link'>Click here to <a href='register_shopkeeper.php'>register</a> again.</p>
                     </div>";
