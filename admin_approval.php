@@ -45,7 +45,7 @@ require('db.php');
             <td><?php if($row['Active']==0)echo 'Pending'; else echo 'Approved';?></td>
             <td>
                 <form action ="admin_approval.php" method ="POST">
-                    <input type = "hidden" name  ="sid" value = "<?php echo $row['sno'];?>"/>
+                    <input type = "hidden" name  ="sno" value = "<?php echo $row['sno'];?>"/>
                     <input type = "submit" name  ="approve" value = "Approve"/>
                     <input type = "submit" name  ="deny" value = "Deny"/>
                 </form>
@@ -61,7 +61,7 @@ require('db.php');
 <?php
 
 if(isset($_POST['approve'])){
-    $sid = $_POST['sno'];
+    $sno = $_POST['sno'];
 
     $select = "UPDATE Shop SET Active = 1 WHERE sno = '$sno'";
     $result = mysqli_query($db, $select);
