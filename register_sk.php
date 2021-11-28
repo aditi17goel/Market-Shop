@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="style.css"/>
 </head>
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-<body class="bg-info text-white">
+<body style="background-color:#006064 ;">
 <?php
     require('db.php');
     // When form submitted, insert values into the database.
@@ -47,18 +47,37 @@
 
     } else {
 ?>
-    <form class="form" action="register_sk.php" method="post">
-        <h1 class="login-title">Registration</h1>
-        <input type="text" class="login-input" name="skname" placeholder="Enter your name" required />
-        <input type="text" class="login-input" name="gender" placeholder="Enter your Gender (M/F)" required />
-        <input type="text" class="login-input" name="address" placeholder="Enter your address" required>
-        <input type="number" class="login-input" name="contact" placeholder="Enter 10 digit mobile number" required>
-        <input type="date" class="login-input" name="dob" placeholder="Enter your DOB"required>
-        <input type="password" class="login-input" name="password" placeholder="Password" required>
-
+<div class="container">
+    <form action="register_sk.php" method="post">
+        <br>
+        <h1 style="color:white;" style="margin-bottom: 3cm;" >Registration</h1>
+        <br>
+         <div class="mb-3">
+        <input type="text" class="form-control" name="skname" placeholder="Enter your name" required />
+        </div>
+         <div class="mb-3">
+        <input type="text" class="form-control" name="gender" placeholder="Enter your gender (M/F)" required />
+        </div>
+         <div class="mb-3">
+        <input type="text" class="form-control" name="address" placeholder="Enter your address" required>
+        </div>
+         <div class="mb-3">
+        <input type="number" class="form-control" name="contact" placeholder="Enter 10 digit mobile number" required>
+        </div>
+         <div class="mb-3">
+        <input type="date" class="form-control" name="dob" placeholder="Enter your DOB"required>
+         </div>
+         <div class="mb-3">
+        <input type="password" class="form-control" name="password" placeholder="Password" required>
+	</div>
+	<div class="mb-3">
         <input type="submit" name="submit" value="Register" class="login-button">
-        <p class="link"><a href="login.php">Click to Login</a></p>
+        </div>
+        <div class="container">
+        	<h5 style="color:white;">Already registered? <a href = "login.php"><b>Login</b></a></h5>
+        </div>
     </form>
+</div>
 <?php
     }
 ?>
