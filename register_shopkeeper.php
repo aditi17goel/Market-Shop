@@ -17,6 +17,7 @@
         $gender=$_REQUEST['gender'];
         $address =$_REQUEST['address'];
         $mobile =$_REQUEST['mobile'];
+        $sno = $_REQUEST['sno'];
         $dob =$_REQUEST['dob'];
         $password =$_REQUEST['password'];
         $checkmob = "SELECT id FROM `Shopkeeper` WHERE mobile = '$mobile'";
@@ -25,11 +26,11 @@
         if($fetch_rows>0){
           echo "<div class='form'>
                 <h3>Mobile Number already exists</h3><br/>
-                <p class='link'><a href='register_sk.php'>New Registeration</a></p>
+                <p class='link'><a href='register_shopkeeper.php'>New Registeration</a></p>
                 </div>";
         } else {
-          $query    = "INSERT into `Shopkeeper` (name, gender, address, mobile, dob, password)
-                       VALUES ('$name','$gender','$address', '$mobile', '$dob', '$password')";
+          $query    = "INSERT into `Shopkeeper` (name, gender, address, mobile, dob, sno, password)
+                       VALUES ('$name','$gender','$address', '$mobile', '$dob', '$sno', '$password')";
 
           $result   = mysqli_query($db, $query);
           if ($result) {
@@ -41,7 +42,7 @@
           } else {
               echo "<div class='form'>
                     <h3>There was an error, Please try again !</h3><br/>
-                    <p class='link'>Click here to <a href='register_sk.php'>register</a> again.</p>
+                    <p class='link'>Click here to <a href='register_shopkeeper.php'>register</a> again.</p>
                     </div>";
           }
         }
@@ -49,7 +50,7 @@
     } else {
 ?>
 <div class="container">
-    <form action="register_sk.php" method="post">
+    <form action="register_shopkeeper.php" method="post">
         <br>
         <h1 style="color:white;" style="margin-bottom: 3cm;" >Registration</h1>
         <br>
@@ -68,6 +69,11 @@
          <div class="mb-3">
         <input type="date" class="form-control" name="dob" placeholder="Enter your DOB"required>
          </div>
+         
+         <div class="mb-3">
+        <input type="number" class="form-control" name="sno" placeholder="Enter shopnumber">
+         </div>
+         
          <div class="mb-3">
         <input type="password" class="form-control" name="password" placeholder="Password" required>
 	</div>

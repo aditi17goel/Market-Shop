@@ -42,7 +42,7 @@
         <input type="password" class="form-control"name="password" placeholder="Enter your Password"/>
         </div>
         <input type="submit" value="Login" name="submit" class="login-button"/>
-        <p class="link"><a href="register_sk.php">New Registration</a></p>
+        <p class="link"><a href="register_shopkeeper.php">New Registration</a></p>
   </form>
 </div>
 <?php
