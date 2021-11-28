@@ -37,6 +37,7 @@ $sno = $row['sno'];
                 </div>
             </div>
           </div>
+  <br>
   <table class="table caption-top">
   <thead>
   </thead>
@@ -61,6 +62,11 @@ $sno = $row['sno'];
       <th scope="row">Date of Birth </th>
       <td><?php echo $row["dob"]; ?></td>
     </tr>
+    <tr class="table-light">
+
+      <td>                      <a class="btn btn-info " href="profile_update.php">Update Details</a></td>
+      <td> </td>
+    </tr>
   </tbody>
 </table>
            
@@ -69,10 +75,28 @@ $sno = $row['sno'];
               $myshops= "SELECT * from Shop where sno = $sno ";
               $query_myshops = mysqli_query($db, $myshops);
               while($row_myshops = mysqli_fetch_assoc($query_myshops)){
-                 $performa = "SELECT overall_rating FROM `Performance` WHERE sno = $sno";
+                 $performa = "SELECT * FROM `Performance` WHERE sno = $sno";
                  $query_performance = mysqli_query($db, $performa);
                  $row_performance = mysqli_fetch_assoc($query_performance);
        ?>   
+       
+       <div class="row gutters-sm">
+              <div class="card h">
+                <div class="card-body">
+                  <div class="d-flex flex-column align-items-center text-center">
+                    
+                    <div class="mt-3">
+                      <h4>Shop Name: <?php echo $row_myshops['sname'];?></h4>
+                      <p class="text-secondary mb-1">Customer Rating : <?php echo $row_performance['cust_rating'];?> </p>
+                      <p class="text-secondary mb-1">Admin Rating : <?php echo $row_performance['admin_rating'];?> </p>
+                      <p class="text-secondary mb-1">Other Shops Rating : <?php echo $row_performance['shops_rating'];?> </p>
+                    </div>
+                  </div>
+                </div>
+            </div>
+          </div>
+
+
        <?php }?>
 	</div>
   </body>
