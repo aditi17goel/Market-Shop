@@ -69,11 +69,13 @@ require('db.php');
             <th>Shop No</th>
             <th>Month</th>
             <th>Year</th>
-            <th>Performance</th>
+            <th>Admin Rating </th>
+            <th>Other Shop Rating </th>
+            <th>Overall Performance</th>
         </tr>
         <?php
 
-              $catego = "SELECT sno, admin_rating from Performance where monthh = MONTH(now()) AND yearr = YEAR(now())";
+              $catego = "SELECT * from Performance where monthh = MONTH(now()) AND yearr = YEAR(now())";
               $all_categories = mysqli_query($db,$catego);
               
               while($row = mysqli_fetch_assoc($all_categories)){
@@ -83,6 +85,8 @@ require('db.php');
             <td><?php echo date("F", strtotime('m'));?></td>
             <td><?php echo date("Y", strtotime('m'));?></td>
             <td><?php echo $row['admin_rating'];?></td>
+            <td><?php if($row['shops_rating']==NULL)echo 'Pending'; else echo $row['shops_rating'] ;?></td>
+            <td><?php  if($row['shops_rating']==NULL)echo $row['admin_rating']; else echo ($row['admin_rating'] + $row['shops_rating'])/2;?></td>
         </tr>
         <?php
                 }
