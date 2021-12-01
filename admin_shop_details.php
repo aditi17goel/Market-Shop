@@ -52,11 +52,12 @@ require('db.php');
             <td><?php echo $row['License_Expiry_Date'];?></td>
             <td><?php if($row['Active']==0)echo 'Pending'; else echo 'Approved';?></td>
         </tr>
-    </table>
-    
+        
     <?php
             }
             ?>
+    </table>
+    
     	<br>
         <h3 style="color:white;" style="margin-bottom: 3cm;" >Area 2: Faculty Quarter</h3>
         <br>
@@ -90,11 +91,12 @@ require('db.php');
             <td><?php echo $row['License_Expiry_Date'];?></td>
             <td><?php if($row['Active']==0)echo 'Pending'; else echo 'Approved';?></td>
         </tr>
-    </table>
-
+        
     <?php
             }
             ?>
+    </table>
+
     <br>
         <h3 style="color:white;" style="margin-bottom: 3cm;" >Area 3: APJ Hostel</h3>
         <br>
@@ -128,11 +130,12 @@ require('db.php');
             <td><?php echo $row['License_Expiry_Date'];?></td>
             <td><?php if($row['Active']==0)echo 'Pending'; else echo 'Approved';?></td>
         </tr>
-    </table>
-
+        
     <?php
             }
             ?>
+    </table>
+
 </div>
 
 <

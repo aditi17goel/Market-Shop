@@ -19,8 +19,8 @@
         $mobile =$_REQUEST['mobile'];
 	$area = $_REQUEST['area'];
 
-        $query    = "INSERT into `Shop` (sname, address, contact, area)
-                     VALUES ('$name','$address', '$mobile', '$area')";
+        $query    = "INSERT into `Shop` (sname, Manager, address, contact, area, Active)
+                     VALUES ('$name',2,'$address', '$mobile', '$area',0)";
 
         $result   = mysqli_query($db, $query);
         if ($result) {

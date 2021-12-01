@@ -51,11 +51,12 @@ require('db.php');
                 </form>
             </td>
         </tr>
-    </table>
-
+        
     <?php
             }
             ?>
+    </table>
+
 </div>
 
 <?php

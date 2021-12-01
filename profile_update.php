@@ -1,5 +1,5 @@
 <?php
-include('auth.php');
+require('auth.php');
 require('db.php');
 
 $skid = $_SESSION['id'];

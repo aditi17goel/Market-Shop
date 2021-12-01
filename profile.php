@@ -1,6 +1,7 @@
 <?php
 include('auth.php');
 require('db.php');
+
 $id = $_SESSION['id'];
 $sql = "SELECT * from `Shopkeeper` where id= '$id'" ;
 $query = mysqli_query($db, $sql);
@@ -71,13 +72,10 @@ $sno = $row['sno'];
 </table>
            
        <?php 
-
-              $myshops= "SELECT * from Shop where sno = $sno ";
+              $myshops= "SELECT * from Shop, Performance where Shop.sno = 103 AND Performance.sno = 103 ";
               $query_myshops = mysqli_query($db, $myshops);
-              while($row_myshops = mysqli_fetch_assoc($query_myshops)){
-                 $performa = "SELECT * FROM `Performance` WHERE sno = $sno";
-                 $query_performance = mysqli_query($db, $performa);
-                 $row_performance = mysqli_fetch_assoc($query_performance);
+              $row = mysqli_fetch_assoc($query_myshops);
+              
        ?>   
        
        <div class="row gutters-sm">
@@ -86,10 +84,13 @@ $sno = $row['sno'];
                   <div class="d-flex flex-column align-items-center text-center">
                     
                     <div class="mt-3">
-                      <h4>Shop Name: <?php echo $row_myshops['sname'];?></h4>
-                      <p class="text-secondary mb-1">Customer Rating : <?php echo $row_performance['cust_rating'];?> </p>
-                      <p class="text-secondary mb-1">Admin Rating : <?php echo $row_performance['admin_rating'];?> </p>
-                      <p class="text-secondary mb-1">Other Shops Rating : <?php echo $row_performance['shops_rating'];?> </p>
+                      <h4>Shop Name: <?php echo $row['sname'];?></h4>
+                      <p class="text-secondary mb-1">Address: <?php echo $row['address'];?> </p>
+                      <p class="text-secondary mb-1">Admin Rating : <?php echo $row['admin_rating'];?> </p>
+                      <p class="text-secondary mb-1">Other Shops Rating : <?php if($row['shops_rating']==NULL) echo "Pending"; else echo $row['shops_rating'];?> </p>
+                      <p class="text-secondary mb-1">License Start Date: <?php if($row['Active'] === 1){ echo $row['License_Start_Date']; }else{ echo 'Pending';} ?></p>
+                      <p class="text-secondary mb-1">License Expiry Date: <?php if($row['Active'] === 1){ echo $row['License_Expiry_Date']; }else{ echo 'Pending';} ?></p>
+                      <p class="text-secondary mb-1">Pending Charges: <?php echo $row['Pending_Charges'];?></p>
                     </div>
                   </div>
                 </div>
@@ -97,7 +98,39 @@ $sno = $row['sno'];
           </div>
 
 
-       <?php }?>
+       <?php ?>
+
+    <br/>
+    <h2 style="color:white;" >License Expiry Reminder  <a class="btn btn-info " href="licenserequest_sr.php">Renew License</a></h2>
+
+  <table class="table caption-top">
+    <tr class="table-light">
+            <th>Shop No.</th>
+            <th>Shop Name</th>
+            <th>Address</th>
+            <th>License Expiry Date</th>
+            
+        
+        </tr>
+
+        <?php
+    
+            $query = "SELECT * FROM Shop WHERE DATEDIFF(License_Expiry_Date,current_date) < 10 and sno=103";
+            $result = mysqli_query($db, $query);
+          
+            while($row = mysqli_fetch_assoc($result)){
+        ?>
+    <tr class="table-light">
+            <td><?php echo $row['sno'];?></td>
+            <td><?php echo $row['sname'];?></td>
+            <td><?php echo $row['address'];?></td>
+            <td><?php echo $row['License_Expiry_Date'];?></td>
+            
+        </tr>
+        <?php
+            }
+            ?>
+    </table>
 	</div>
   </body>
 </html>
