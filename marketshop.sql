@@ -150,7 +150,7 @@ CREATE TABLE `Shopkeeper` (
 --
 
 INSERT INTO `Shopkeeper` (`id`, `name`, `gender`, `address`, `mobile`, `dob`, `sno`, `password`) VALUES
-(2, 'Aditi Goel', 'F', 'Gurgaon, Haryana', 8826826060, '2001-04-17', 101, 'helloworld'),
+(2, 'Aditi Goel', 'F', 'Gurgaon, Haryana', 9898989898, '2001-04-17', 101, 'helloworld'),
 (3, 'Rahul Kumar', 'M', 'Bihta, BIhar', 8766788767, '1990-09-04', 102, 'hellojiji'),
 (4, 'Vinod', 'M', 'Bihta, BIhar', 7658769876, '1974-10-15', 106, 'hshshs'),
 (5, 'Hitesh', 'M', 'Ranchi', 8989898989, '1984-11-15', 1, 'heyman'),
